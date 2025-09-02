@@ -7,20 +7,21 @@ import {
     FaGithub,
     FaLinkedinIn,
 } from "react-icons/fa";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AuthCard = () => {
     const [isActive, setIsActive] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [showForgot, setShowForgot] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
-const handleClose = () => {
-  setIsClosing(true);
-  setTimeout(() => {
-    setShowForgot(false);
-    setIsClosing(false);
-  }, 400); // match CSS transition time
-};
+    const handleClose = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setShowForgot(false);
+            setIsClosing(false);
+        }, 400); // match CSS transition time
+    };
 
 
     return (
@@ -45,9 +46,22 @@ const handleClose = () => {
                             </a>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" required/>
-                        <input type="email" name="email" placeholder="Email" autoComplete="email" required/>
-                        <input type="password" placeholder="Password" required/>
+                        <input type="text" placeholder="Name" required />
+                        <input type="email" name="email" placeholder="Email" autoComplete="email" required />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                required
+                            />
+                            <span
+                                className="eye-icon"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
+
                         <button className="submit-btn">Sign In</button>
                     </form>
                 </div>
@@ -71,8 +85,21 @@ const handleClose = () => {
                             </a>
                         </div>
                         <span>or use your email password</span>
-                        <input type="email" name="email" placeholder="Email" autoComplete="email" required/>
-                        <input type="password" placeholder="Password" required/>
+                        <input type="email" name="email" placeholder="Email" autoComplete="email" required />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                required
+                            />
+                            <span
+                                className="eye-icon"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
+
                         <a href="#"
                             onClick={() => setShowForgot(true)}
                         >
@@ -117,7 +144,7 @@ const handleClose = () => {
             {showForgot && (
                 <div className="forgot-glass-overlay" onClick={handleClose}>
                     <div
-                           className={`forgot-card ${isClosing ? "closing" : "active"}`}
+                        className={`forgot-card ${isClosing ? "closing" : "active"}`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h2>Forgot Password?</h2>
@@ -125,7 +152,7 @@ const handleClose = () => {
 
                         <form>
                             <div className="forgot-inputGroup">
-                                <input type="email" name="email" autoComplete="email" required/>
+                                <input type="email" name="email" autoComplete="email" required />
                                 <label>Email Address</label>
                             </div>
 

@@ -142,6 +142,27 @@ body {
     box-shadow: 0 0 10px rgba(255, 105, 135, 0.6);
 }
 
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 80px; /* space for icon */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    cursor: pointer;
+    color: #555;
+    font-size: 18px;
+}
+
+
 .form-container {
   position: absolute;
   top: 0;
