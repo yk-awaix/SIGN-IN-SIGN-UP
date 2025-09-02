@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background-color: red;
+    background: linear-gradient(to right, #eae8e8, red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    color: #fff;
+}
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+.container span{
+    font-size: 12px;
+}
+
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.toggle-container button {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 45px;
+    border-radius: 25px;
+    margin-top: 15px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(255, 105, 135, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggle-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 105, 135, 0.7);
+} 
+
+.toggle-container button.hidden {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.submit-btn {
+  --bg: #000;
+  --hover-text: #000;
+  color: #e6e6fa;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 25px;
+  padding: 12px 45px;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  transition: 0.2s;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.submit-btn:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: linear-gradient(135deg, #ee0979, #ff6a00);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.submit-btn:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+.container form {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0px;
+    height: 100%;
+}
+
+.container h1 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.container p, 
+.container span, 
+.container a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.container input {
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 12px 15px;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.container input:focus {
+    box-shadow: 0 0 10px rgba(255, 105, 135, 0.6);
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container span {
+    margin-bottom: 5px;
+}
+
+.sign-in {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .sign-in {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.sign-in input {
+    color: black;
+}
+
+.sign-up {
+  right: 0;
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .sign-up {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 5;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.form-container.sign-up input::placeholder {
+  color: #fff;
+  opacity: 0.8; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form-container.sign-up input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset !important;
+  -webkit-text-fill-color: #fff !important; 
+  transition: background-color 5000s ease-in-out 0s; 
+}
+
+.form-container.sign-in input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s; 
+}
+
+/* For Firefox */
+.form-container.sign-up input:autofill {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.form-container.sign-in input:autofill {
+    box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+
+.social-icons a {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.social-icons a:hover {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    transform: scale(1.1);
+}
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-panel {
+    color: #fff;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(200%);
+}
+
+.forgot-glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:rgba(255, 255, 255, 0);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.4s ease forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.forgot-card {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 450px;
+  height: 270px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+  transition: top 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+
+.forgot-card.active {
+  top: 45%;
+  opacity: 1;
+}
+
+.forgot-card.closing {
+  top: -100%;
+  opacity: 0;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+.forgot-card h2 {
+    margin-bottom: 5px;
+}
+
+.forgot-inputGroup {
+  margin-top: 35px;
+  width: 100%;
+  position: relative;
+}
+
+.forgot-inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.50);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.forgot-inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.forgot-inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: rgba(84, 84, 84, 0.1);
+  border-radius: 12px;
+}
+
+.forgot-inputGroup input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s; 
+}
+
+/* For Firefox */
+.forgot-inputGroup input:autofill {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.forgot-btn {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  width: 100%;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(255, 105, 135, 0.5);
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.forgot-btn .forgot-btn-icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0 5px 15px rgba(255, 105, 135, 0.5);
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.forgot-btn:hover .forgot-btn-icon {
+  width: calc(100% - 0.6em);
+}
+
+.forgot-btn .forgot-btn-icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #ee0979;
+}
+
+.forgot-btn:hover .forgot-btn-icon svg {
+  transform: translateX(0.1em);
+}
+
+.forgot-btn:active .forgot-btn-icon {
+  transform: scale(0.95);
+}
